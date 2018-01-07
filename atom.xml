@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-06T15:49:52.768Z</updated>
+  <updated>2018-01-07T09:34:38.799Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql数据库入门</title>
+    <link href="http://yoursite.com/2018/01/07/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%A5%E9%97%A8/"/>
+    <id>http://yoursite.com/2018/01/07/mysql数据库入门/</id>
+    <published>2018-01-07T09:30:31.000Z</published>
+    <updated>2018-01-07T09:34:38.799Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="相关概念介绍"><a href="#相关概念介绍" class="headerlink" title="相关概念介绍"></a>相关概念介绍</h2><p>MySQL为关系型数据库（Relational Database Management System）,所谓的关系型可以理解为“表格”</p><p><img src="http://upload-images.jianshu.io/upload_images/1784460-6a67981b7a33aa6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="某班的学生信息中的相关概念"></p><ul><li>键（key）：表中用来识别某个特定人\物的方法，键的值在当前列中具有唯一性</li></ul><h2 id="windows下mysql的配置"><a href="#windows下mysql的配置" class="headerlink" title="windows下mysql的配置"></a>windows下mysql的配置</h2><h2 id="MySQL脚本的基本组成"><a href="#MySQL脚本的基本组成" class="headerlink" title="MySQL脚本的基本组成"></a>MySQL脚本的基本组成</h2><p>MySQL通过执行SQL脚本来完成对数据库的操作，该脚本由一条或者多条MySQL语句（SQL语句+扩展语句）组成，保存时脚本文件的后缀名为.sql</p><h2 id="MySQL中的数据类型"><a href="#MySQL中的数据类型" class="headerlink" title="MySQL中的数据类型"></a>MySQL中的数据类型</h2><p>三大数据类型：数字、日期\时间、字符串<br>数据类型</p><ul><li>整数：tinyint、smallint、mediumint、int、bigint</li><li>浮点型：float、 double、 real、 decimal<br>日期和时间：date、time、datetime、timestamp、year<br>字符串类型：</li><li>字符串: char、varchar</li><li>文本: tinytext、text、mediumtext、longtext</li><li>二进制(可用来存储图片、音乐等):tinyblob、blob、mediumblob、longblob</li></ul><h2 id="使MySQL数据库"><a href="#使MySQL数据库" class="headerlink" title="使MySQL数据库"></a>使MySQL数据库</h2><p><strong>登录</strong></p><p>mysql - h 主机名 -u 用户名 -p</p><p><code>mysql -u root -p</code></p><p><strong>创建一个数据库</strong></p><p><code>create database 数据库名 [其它选项];</code></p><p><strong>选择所要操作的数据库</strong></p><p>两种方法：</p><ul><li><p>在登录数据库时指定, 命令:<br>mysql -D 所选择的数据库名 -h 主机名 -u 用户名 -p<br>例如<br><code>mysql -D samp_db -u root -p</code></p></li><li><p>在登录后使用 use 语句指定, 命令:<br>use 数据库名;<br>use 语句可以不加分号, 执行 use samp_db 来选择刚刚创建的数据库, 选择成功后会提示: Database changed</p></li></ul><h2 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h2><p>使用create table语句可完成对表格的创建<br><code>create table 表名称（列名称）;</code></p><h2 id="操作MySQL数据库"><a href="#操作MySQL数据库" class="headerlink" title="操作MySQL数据库"></a>操作MySQL数据库</h2><p><strong>向表中插入数据</strong></p><p>insert语句可以用来将一行或者多行数据插入到数据库表中，其中一般的形式如下：</p><p><code>insert [into] 表名[列名1，列名2，列名3...] value (值1，值2，值3,...)</code></p><p><strong>查询表中的数据</strong></p><p>select语句：</p><p><code>select 列名称 from 表名称 [查询条件]；</code></p><p><strong>按特定条件查询</strong></p><p>where关键词用于指定查询条件，用法形式：</p><p><code>select 列名称 from 表名称 where 条件;</code></p><p><strong>更新表中的数据</strong></p><p><code>update 表名称 set 列名称 = 新值 where 更新条件;</code></p><p><strong>删除表中的数据</strong></p><p>delete 语句：</p><p><code>delete from 表名称 where 删除条件;</code></p><h2 id="创建表后的修改"><a href="#创建表后的修改" class="headerlink" title="创建表后的修改"></a>创建表后的修改</h2><p><strong>添加列</strong></p><p>基本形式：</p><p><code>alter table 表名 add 列名 列数据类型 [after 插入位置];</code></p><p><strong>修改列</strong></p><p><code>alter table 表名 change 列名称 列新名称 新数据类型;</code></p><p><strong>删除列</strong></p><p><code>alter table 表名 drop 列名称;</code></p><p><strong>重命名表</strong></p><p><code>alter table 表名 rename 新表名;</code></p><p><strong>删除整张表</strong></p><p><code>drop table 表名;</code></p><p><strong>删除整个数据库</strong></p><p><code>drop database 数据库名;</code></p><p>emmmmm,未完待续</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;相关概念介绍&quot;&gt;&lt;a href=&quot;#相关概念介绍&quot; class=&quot;headerlink&quot; title=&quot;相关概念介绍&quot;&gt;&lt;/a&gt;相关概念介绍&lt;/h2&gt;&lt;p&gt;MySQL为关系型数据库（Relational Database Management System）,所谓
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web前端和移动前端</title>
+    <link href="http://yoursite.com/2018/01/07/%E5%89%8D%E7%AB%AF%E5%92%8C%E7%A7%BB%E5%8A%A8%E5%89%8D%E7%AB%AF/"/>
+    <id>http://yoursite.com/2018/01/07/前端和移动前端/</id>
+    <published>2018-01-07T09:14:45.000Z</published>
+    <updated>2018-01-07T09:20:39.750Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>直接上一张图</p><p><img src="http://upload-images.jianshu.io/upload_images/1784460-5d5102b6f48d0df3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="两个的关系和区别"></p><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>前端是个很大的概念，我的理解是用户能够看到，直接接触到的层面都算是前端，比如IOS客户端界面，安卓客户端界面，网页界面，甚至PC/MAC 桌面端软件界面；现在最常见的说法一般是指Web前端，也就是针对于网页端开发的工作。</p><a id="more"></a><ul><li><p><strong>Web App：</strong>指的是【<a href="http://en.wikipedia.org/wiki/Web_application" target="_blank" rel="noopener">Web application</a>】，也就是以浏览器作为客户端的软件。</p></li><li><p><strong>Mobile Web App ：</strong>当然就是指在手机端打开的Web App啦。</p></li></ul><h2 id="移动客户端的开发类型"><a href="#移动客户端的开发类型" class="headerlink" title="移动客户端的开发类型"></a>移动客户端的开发类型</h2><ul><li><p><strong>Native App（原生APP）：</strong>也就是完全使用移动设备系统语言写的客户端，iPhone iPad就是纯Object-C，安卓就是纯JAVA, 就是用户看到的界面啦体验到的交互啦都是原生的。这是性能最棒的开发方式，但灵活性就没下面的好。</p></li><li><p><strong>Web App：</strong>这个就是在移动浏览器里打开的，纯HTML+CSS+JS，说白了就是个网页，只不过非常的富应用，比如手机浏览器访问的GMAIL啥啥的。但说白了就是在浏览器里打开的页面。。IOS支持可以在桌面创建访问的快捷方式，但是说到底还是打开Safari跑。。而且对设备硬件的接口什么的挺薄弱。</p></li><li><p><strong>Hybrid App：</strong>[<a href="http://en.wikipedia.org/wiki/HTML5_in_mobile_devices#Hybrid_Mobile_Apps" target="_blank" rel="noopener">HTML5 in mobile devices</a>] 我觉得这个更为合适一些。实际上是使用原生写了一个容器，然后使用HTML+CSS+JS来实现用户界面和交互。Web App的短处便可以克服（因为自己写的容器可以辅助暴露偏底层的接口，比如本地存储或者麦克风控制之类），同时比起纯原生的java或者object-c开发灵活性要高（更新可以更快更迅速，也不依赖于市场，因为说白了，就是自己下载更新网页资源。。）实际上这种方式已经不限于移动端。。豌豆荚其实是个pc端的hybrid app 哇~~~ 而且说实在的，桌面开发的性能就现在来说要比移动好很多。</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;区别&quot;&gt;&lt;a href=&quot;#区别&quot; class=&quot;headerlink&quot; title=&quot;区别&quot;&gt;&lt;/a&gt;区别&lt;/h2&gt;&lt;p&gt;直接上一张图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1784460-5d5102b6f48d0df3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;两个的关系和区别&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前端&quot;&gt;&lt;a href=&quot;#前端&quot; class=&quot;headerlink&quot; title=&quot;前端&quot;&gt;&lt;/a&gt;前端&lt;/h2&gt;&lt;p&gt;前端是个很大的概念，我的理解是用户能够看到，直接接触到的层面都算是前端，比如IOS客户端界面，安卓客户端界面，网页界面，甚至PC/MAC 桌面端软件界面；现在最常见的说法一般是指Web前端，也就是针对于网页端开发的工作。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>git 常用方法小结</title>
