@@ -1,6 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[markdown语法总结]]></title>
+    <url>%2F2018%2F01%2F07%2F2017-11-07markdown%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[区块引用，’&gt;’的使用就是直接在区块前面加上’&gt;’代码应用示例 return shell_exec(&quot;echo $input | $markdown_script&quot;); 有序列表 这是第一 这是第四?（其实变成了第二，但是文字前面需要空格哦~） 注意：如果列表项目间用空行分开，在输出 HTML 时 Markdown 就会将项目内容用 标签包起来 代码区块可以隔一行，然后加四个空格（或者两个制表符，有的电脑一个制表符），下面就可以形成代码块了 这是一个普通的块 这是一个代码块 分割线三个以上的星号、减号、底线 强调Markdown使用*和_作为强调字词的符号一个的时候相当于 两个的时候相当于strong 这是被强调的内容 这是strong的内容 代码一小段代码,直接使用’`’ hello world 图片]]></content>
+      <categories>
+        <category>实习</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>实习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[前端代码规范]]></title>
+    <url>%2F2018%2F01%2F07%2F%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%2F</url>
+    <content type="text"><![CDATA[2017.11.6html开发代码规范部分整理 相关属性声明应当归为一组，并要按照一定的顺序排列： CSS开发部分规范基于最近的父class或者基本（base）class作为新的class的前缀 less的使用规范（由于之前对less的了解还是有限的，所以这里可以先放放） JavaScript开发规范 常量命名形式：大写字符，并用下划线分隔 eslint使用的是Standard配置方案的话，句末的分号需要省略 不要在一个快内声明一个函数 操作DOM——使用原声的JavaScript 循环的话，尽量少使用for-in循环，使用常规的for循环或者数组的forEach 永远不要使用Array作为map/hash/associative数组，请用Oject来代替 文件或者类中有私有属性，变量和方法名应该以下划线“_”开头 字符串使用单引号而不是双引号 jsDoc git的安装的话，参考了廖雪峰的教程 node.js的安装，宿舍的网络比较差，所以打算去公司再安装]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>实习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node学习之node基础]]></title>
+    <url>%2F2018%2F01%2F07%2Fnode%E5%AD%A6%E4%B9%A0%E4%B9%8Bnode%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[这几天在学习node，以下的笔记主要是自己看《Node.js开发指南》的笔记，下面的内容主要是1到4章的 单线程、异步式I/O、事件驱动式的程序设计模型 Node.Js是可以让JavaScript运行在服务器端的开发平台 Node.js内建了一个HTTP服务器支持，也就是你可以轻而易举地实现一个网站和服务器的组合 Node.js还可以部署到非网络应用的环境下，比如一个命令行工具Node.js可以调用C/C++的代码 Node.js在执行的过程中会维护一个事件队列，程序在执行时进入事件循环等待下一个事件到来，每个异步式I/O请求完成后会被推送到事件队列中，等待程序进程进行处理 内存上下文切换？？ 回调函数很重要 Node.js的异步机制是基于事件的，所有的I/O、网络通信、数据库查询都以非阻塞的方式请求，返回的结果由事件循环处理 第三章 Node.js的快速入门 node script.js 其中script.js 就是脚本的文件名 node -e &quot;console.log(&#39;Hello&#39;)&quot; Node的REPL模式,REPL（Read-eval-print loop），即输入—求值—输出循环 两次Ctrl+c退出该模式 使用supervisor可以实现“热加载supervisor 文件名 当线程遇到I/O操作时候，不会以阻塞的方式等待I/O操作的完成或者数据的返回，而是将I/O请求发送给操作系统，继续执行下一条语句。当操作系统完成I/O操作时候，以事件的形式通知I/O操作的线程，线程会在待定的时间处理这个事件 单线程、非阻塞I/O部分和计算部分。通常I/O部分占用的时间比计算的部分多得多 异步式I/O比传统的多线程阻塞式I/O少了多线程的开销 EventEmitter require不会重复加载模块 覆盖exportsexports使用module.exports = Hello 代替exports.Hello = Hello CommonJs规范应该具备以下特征： npm是node官方提供的包管理工具 获取一个包npm [install/i] [package_name]本地模式和全局模式npm [install/i] -g [package_name] 本地模式不会注册PATH环境变量，仅仅是把包安装到node_modules子目录下，其中的bin目录没有包含在PATH环境变量中，不能在命令行中调用 使用全局模式安装的包并不能直接在 JavaScript 文件中用require获得，因为 require 不会搜索 /usr/local/lib/node_modules/。 npm link 不支持Windows 通过使用npm init可以根据交互式问答产生一个符合标准的package.json npm pubilsh发布包 package.json中修改version字段，重新使用npm publish重新发布 node中的全局对象是global，所有的全局变量（除了global本身以外）都是global对象的属性 process就是一个全局变量，即global对象的属性。它用于描述当前node进程状态的对象，提供一个与操作系统的简单接口 process.nextTick(callback)的功能是为事件循环设置一项任务，Node.js会在下一次事件循环响应时候调用callback 常用工具util是node的核心模块，提供常用函数的集合，用于弥补核心JavaScript的功能过于精简的不足 util.inherit(constructor,superConstructor)是一个实现对象间原型继承的函数util.inspect(object,[showHidden],[depth],[])是将任意对象转换成字符串的方法，通常用于调试或者错误输出 对于每个时间，EventEmitter支持若干个事件监听器 Node标准库提供了http模块，其中封装了高效的HTTP服务器和一个简易的HTTP客户端 http.Server是HTTP模块中的HTTP服务器对象，用Node.js做的所有基于HTTP协议的系统，如网站、社交应用甚至代理服务器，都是基于http.Server实现的 http.Server的事件对它的事件编写响应函数即可实现http服务器的所有功能requestconnectionclose http.createServer([requestListener])功能是创建一个HTTP服务器并将requestListener作为request事件的监听函数 http.ServerRequest是HTTP请求的信息一般由http.Server的request事件发送的，作为第一个参数进行传递 以下3个事件用于控制请求体传输dataendclose http.ServerResponse是返回给客户端的信息，决定了用户最后能够看到的内容。也是有http.Server的request事件发送的，作为第二个参数进行传递 http模块提供两个函数http.request和http.get，功能是作为客户端向http服务器发起请求 http.request(options,callback)发起http请求。option是类似关联数组的对象，表示请求的参数，callback是请求的回调函数 http.ClientRequest是由http.request或者http.get返回的对象，表示一个已经产生而且正在进行的http请求]]></content>
+      <categories>
+        <category>node</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node学习之认识node]]></title>
+    <url>%2F2018%2F01%2F07%2Fnode%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AE%A4%E8%AF%86node%2F</url>
+    <content type="text"><![CDATA[学习node的基础 以下是看慕课网上进击Node.js基础（一）的学习笔记 解决什么样的问题？整个web应用程序架构（包括流量、处理器速度和内存速度）中的瓶颈是：服务器能够处理的并发连接的最大数量 node的解决方法是：更改连接到服务器的方式node是一个服务器程序 node本身运行V8 JavaScript V8 JavaScript引擎是Google用于其Google浏览器的底层JavaScript引擎 node实际上会使用Google编写的V8引擎，并将其重建成可在服务器端使用 事件驱动编程：监听事件，编写一个回调函数 c++语言编写运行环境 自己特殊的全局变量：例如process 模块与包模块工具 1234567//一个简单的例子var http = require(&apos;http&apos;);http.createServer(function(req,res)&#123; res.writeHead(200,&#123;&apos;Content-Type&apos;:&apos;text/plain&apos;&#125;); res.end(&quot;hello \n&quot;);&#125;).listen(1337,&apos;127.0.0.1&apos;);console.log(&apos;Server running at http://127.0.0.1:1337/&apos;); 创建web服务器 createServer(匿名回调函数).listen(端口号,IP) Ctrl+C停止服务器 listen实现监听 JavaScript天生缺陷：缺少模块化机制表现：JS中容易出现变量被覆盖，方法被替代的情况（即被污染）传统解决方法：使用命名空间的方式，把变量和函数限制在某个特定的作用域中 CommonJs规范：约定了JavaScript如何去组织，如何去编写，包括包、二进制、套接字、单元测试等等。首先把执行不同的任务代码块和代码文件看成一个独立的模块，每个模块都是一个单独的作用域，但不是孤立的，可能存在依赖关系。每个模块分成三个部分：定义、标志和引用 nodeJS的模块管理机制npm是用来管理各种功能包的 模块的分类：核心模块、文件模块和第三方模块 模块的引用：路径名模块名模块名引用最终也会被映射成路径。 模块的流程：创建模块导出模块加载模块使用模块 使用require导入模块exports导出模块 module.exports exportsmodule.exports和export区别：module.exports = add;特别的对象类型;exports.add = add;传统的模块实例;（exports是辅助方法）module.exports最终返回给调用者；exports挂载属性和方法，然后把属性赋给module.exports forEach的使用 123students.forEach(function(item,index)&#123; student.add(item)&#125;) 记得只有真正的数组才能使用forEacharray = [].slice.call(el.children) url的parse方法将url解析成对象 url.parse(url字符串) format resolveformat和parse是相反的 parse的第一个参数url字符串，第二个参数是布尔值 默认为false，如果是true的话，query将被解析成对象（false是字符串），第三个参数也会是布尔值，默认是false，设置为true的话，host的解析会有区别 序列化和反序列化 querystring.stringify序列化querystring.parse反序列化 escape unescape escape进行转义，unescape进行反转义 使用技巧：GitHub中快捷键T可以更好搜索的文件路径 1234567891011121314var http = require(&apos;http&apos;);//简单爬虫的实现var url = &quot;http://www.imooc.com/video/7965&quot;http.get(url,function(res)&#123; var html = &apos;&apos;; res.on(&apos;data&apos;,function(data)&#123; html += data; &#125;) res.on(&apos;end&apos;,function()&#123; console.log(html) &#125;)&#125;) node没有冒泡，捕获之类]]></content>
+      <categories>
+        <category>node</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[你不知道的JavaScript（作用域与闭包）]]></title>
+    <url>%2F2018%2F01%2F07%2F%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%EF%BC%88%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[看《你所不知道的JavaScript（上卷）》笔记 RHS查询，LHS查询 RHS查询与简单地查找某个变量的值没有什么差别，但是LHS查询则是试图找到变量的容器本身，从而可以对他赋值 LHS——赋值的目标是谁？RHS——谁是赋值操作的源头？如果查找的目的是对变量进行赋值，那么就会使用LHS 查询；如果目的是获取变量的值，就会使用RHS 查询。 作用域查找会在第一个匹配的标识符时停止 欺骗词法： 1、使用eval，遮蔽了外部（全局）作用域中的同名变量 在严格模式的程序中，eval(…)在运行时候有其自己的词法作用域，意味着其中的声明无法修改所在的作用域。 2、with 作用域气泡的概念 从所写的代码中挑选出一段任意的片段，然后用函数声明对它进行包装，实际上就是把这些代码“隐藏起来” 隐藏内部实现 函数表达式和函数声明 推不推荐使用arguments.callee？ 行内函数表达式非常强大而且有用 立即执行函数（IIFE Immediately Invoked Function Expression） 1(function foo()&#123;...&#125;()) (function foo()&#123;...&#125;)() IIFE 一个很普遍的进阶用法就是把它们当做函数调用并传参数过去 IIFE还有一种用途就是倒置代码的运行顺序，将需要运行的函数放在第二位，在IIFE执行之后当做参数传递进去 try…catch…中的catch分句会创建一个块级作用域，其中声明的变量仅仅在catch的内部使用 引擎会在解释JavaScript代码之前首先对其进行编译，编译阶段中的一个部分工作就是找到所有的声明，并用合适的作用域将它们关联起来 包含变量和函数在内的所有声明都会在任何代码被执行前首先被处理 foo这个时候是undefined，但是对其进行函数调用的话会导致非法操作，因此抛出TypeError异常 函数优先 当函数可以记住并访问当前所在的词法作用域时候，就产生了闭包，即使函数是在当前词法作用域之外执行的 原本应该在函数执行结束后进行垃圾回收，但是bar()所声明的位置决定了它拥有涵盖foo()内部作用域的闭包，使得该作用域一直存活着，从而提供bar()在之后任何时间进行引用 所有的函数共享一个i的引用。循环结构让我们误以为背后还有更加复杂的机制在起作用，但实际上是没有的。我们需要更多的闭包作用域，特别是循环的过程中每个迭代都需要有一个闭包作用域 而通过IIFE可以声明并立即执行一个函数来创建作用域 注意两者的区别 本质上这是将一个块转换成一个可以被关闭的作用域]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在移动端测试前端页面（真机调试）]]></title>
+    <url>%2F2018%2F01%2F07%2F%E5%9C%A8%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%B5%8B%E8%AF%95%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%EF%BC%88%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[环境首先，要安装Git！下载node.js！安装淘宝镜像！ 过程 右键——Git bash1live-server eg:这里就是8080 window+X——选择命令行（管理员模式） ipconfig 利用手机连接电脑WiFi（处于同一个局域网下面） 在手机浏览器中输入IPv4地址：端口号。即可访问！]]></content>
+      <categories>
+        <category>前端技能</category>
+      </categories>
+      <tags>
+        <tag>前端技能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Font Awesome基础使用]]></title>
+    <url>%2F2018%2F01%2F07%2FFont-Awesome%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[下载使用示例 引入CSS文件1&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;font-awesome-4.7.0/css/font-awesome.min.css&quot;&gt; 基本图标您可以将Font Awesome图标使用在几乎任何地方，只需要使用CSS前缀 fa ，再加上图标名称。 Font Awesome是为使用内联元素而设计的。我们通常更喜欢使用 i标签 ，因为它更简洁。 但实际上使用 才能更加语义化。 1&lt;i class=&quot;fa fa-camera-retro&quot;&gt;&lt;/i&gt; fa-camera-retro 注：如果您修改了图标容器的字体大小，图标大小会随之改变。同样的变化也会发生在颜色、阴影等其它任何CSS支持的效果上。 大图标使用 fa-lg (33%递增)、fa-2x、 fa-3x、fa-4x，或者 fa-5x 类 来放大图标。 注：如果图标的底部和顶部被截断了，您需要增加行高来解决此问题。 固定宽度使用 fa-fw 可以将图标设置为一个固定宽度。主要用于不同宽度图标无法对齐的情况。 尤其在列表或导航时起到重要作用。 123456&lt;div class=&quot;list-group&quot;&gt; &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-home fa-fw&quot;&gt;&lt;/i&gt; Home&lt;/a&gt; &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-book fa-fw&quot;&gt;&lt;/i&gt; Library&lt;/a&gt; &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-pencil fa-fw&quot;&gt;&lt;/i&gt; Applications&lt;/a&gt; &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-cog fa-fw&quot;&gt;&lt;/i&gt; Settings&lt;/a&gt;&lt;/div&gt; 用于列表123456&lt;ul class=&quot;fa-ul&quot;&gt; &lt;li&gt;&lt;i class=&quot;fa-li fa fa-check-square&quot;&gt;&lt;/i&gt;List icons&lt;/li&gt; &lt;li&gt;&lt;i class=&quot;fa-li fa fa-check-square&quot;&gt;&lt;/i&gt;can be used&lt;/li&gt; &lt;li&gt;&lt;i class=&quot;fa-li fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt;as bullets&lt;/li&gt; &lt;li&gt;&lt;i class=&quot;fa-li fa fa-square&quot;&gt;&lt;/i&gt;in lists&lt;/li&gt;&lt;/ul&gt; 边框和对齐使用 fa-border 以及 pull-right 或 pull-left 可以轻易构造出引用的特殊效果。 1234&lt;i class=&quot;fa fa-quote-left fa-3x pull-left fa-border&quot;&gt;&lt;/i&gt;...tomorrow we will run faster, stretch out our arms farther...And then one fine morning— So we beat on, boats against thecurrent, borne back ceaselessly into the past. 动画使用 fa-spin 类来使任意图标旋转，现在您还可以使用 fa-pulse 来使其进行8方位旋转。尤其适合 fa-spinner、fa-refresh 和 fa-cog 。12345&lt;i class=&quot;fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-circle-o-notch fa-spin&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-refresh fa-spin&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-cog fa-spin&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-spinner fa-pulse&quot;&gt;&lt;/i&gt; 注： CSS3动画不支持IE8-IE9。 ##旋转与翻转使用 fa-rotate- 和 fa-flip- 类可以对图标进行任意旋转和翻转。123456&lt;i class=&quot;fa fa-shield&quot;&gt;&lt;/i&gt; normal&lt;br&gt;&lt;i class=&quot;fa fa-shield fa-rotate-90&quot;&gt;&lt;/i&gt; fa-rotate-90&lt;br&gt;&lt;i class=&quot;fa fa-shield fa-rotate-180&quot;&gt;&lt;/i&gt; fa-rotate-180&lt;br&gt;&lt;i class=&quot;fa fa-shield fa-rotate-270&quot;&gt;&lt;/i&gt; fa-rotate-270&lt;br&gt;&lt;i class=&quot;fa fa-shield fa-flip-horizontal&quot;&gt;&lt;/i&gt; fa-flip-horizontal&lt;br&gt;&lt;i class=&quot;fa fa-shield fa-flip-vertical&quot;&gt;&lt;/i&gt; icon-flip-vertical 组合使用如果想要将多个图标组合起来，使用 fa-stack类作为父容器， fa-stack-1x作为正常比例的图标， fa-stack-2x 作为大一些的图标。还可以使用 fa-inverse类来切换图标颜色。您可以在父容器中 通过添加 大图标 类来控制整体大小。1234567891011121314151617181920&lt;span class=&quot;fa-stack fa-lg&quot;&gt; &lt;i class=&quot;fa fa-square-o fa-stack-2x&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-twitter fa-stack-1x&quot;&gt;&lt;/i&gt;&lt;/span&gt;fa-twitter on fa-square-o&lt;br&gt;&lt;span class=&quot;fa-stack fa-lg&quot;&gt; &lt;i class=&quot;fa fa-circle fa-stack-2x&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-flag fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt;&lt;/span&gt;fa-flag on fa-circle&lt;br&gt;&lt;span class=&quot;fa-stack fa-lg&quot;&gt; &lt;i class=&quot;fa fa-square fa-stack-2x&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-terminal fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt;&lt;/span&gt;fa-terminal on fa-square&lt;br&gt;&lt;span class=&quot;fa-stack fa-lg&quot;&gt; &lt;i class=&quot;fa fa-camera fa-stack-1x&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-ban fa-stack-2x text-danger&quot;&gt;&lt;/i&gt;&lt;/span&gt;fa-ban on fa-camera]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[网页自适应布局]]></title>
+    <url>%2F2018%2F01%2F07%2F%E7%BD%91%E9%A1%B5%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%2F</url>
+    <content type="text"><![CDATA[在网页代码头部，加入一行viewport元标签1&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt; viewport是网页默认的宽度和高度，上面这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100% 兼容性问题，几乎所有都支持，包括ie9,低于IE9的 ，需要用到下面的一段代码 1&lt;script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"&gt;&lt;/script&gt; 不使用绝对宽度——css不能指定像素宽度，只能指定百分比,或者 1width:auto; 使用相对字体大小（em）,不能使用绝对字体大小（px） 123 body &#123; font: normal 100% Helvetica, Arial, sans-serif; &#125; 默认字体的100%，也就是16像素123 h1 &#123; font-size: 1.5em; &#125; 默认像素的1.5倍 使用流动布局float的好处是，如果宽度太小，放不下两个元素，后面的元素会自动滚动到前面元素的下方，不会在水平方向overflow（溢出），避免了水平滚动条的出现 注意position的使用，有机会专题讨论 选择加载CSS 1&lt;link rel="stylesheet" type="text/css" media="screen and (max-device-width: 400px)" href="tinyScreen.css" /&gt; 上面的代码意思是，如果屏幕宽度小于400像素（max-device-width: 400px），就加载tinyScreen.css文件。 123&lt;link rel="stylesheet" type="text/css" media="screen and (min-width: 400px) and (max-device-width: 600px)" href="smallScreen.css" /&gt; 如果屏幕宽度在400像素到600像素之间，则加载smallScreen.css文件。 除了用html标签加载CSS文件，还可以在现有CSS文件中加载。 1 @import url("tinyScreen.css") screen and (max-device-width: 400px); css的@media规则同一个CSS文件中，也可以根据不同的屏幕分辨率，选择应用不同的CSS规则 123456789 @media screen and (max-device-width: 400px) &#123; .column &#123; float: none; width:auto; &#125; #sidebar &#123; display:none; &#125; &#125; 上面的代码意思是，如果屏幕宽度小于400像素，则column块取消浮动（float:none）、宽度自动调节（width:auto），sidebar块不显示（display:none） 图片的自适应（fluid image）除了布局和文本，”自适应网页设计”还必须实现图片的自动缩放。这只要一行CSS代码： 123img&#123; max-width:100%;&#125; 这行代码对于大多数的嵌入网页的视频也有效老版本的IE不支持max-width，所以只好写成： 1 img &#123; width: 100%; &#125; 此外，windows平台缩放图片时，可能出现图像失真现象。这时，可以尝试使用IE的专有命令：1 img &#123; -ms-interpolation-mode: bicubic; &#125;]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[学校项目总结]]></title>
+    <url>%2F2018%2F01%2F07%2F%E5%AD%A6%E6%A0%A1%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[介绍在学校的时候，有幸接到一个关于思政类型的项目（类似于一些新闻网站）。其实内容并不复杂，只是当时能力有限，现在回头总结一下当时的一些问题。 制作甘特图在项目开始阶段，由于时间紧迫，制作甘特图安排任务 使用Visio轻松绘制甘特图和制定项目计划 excel制作甘特图(excel2010) @font-face浏览器支持情况 IE9只支持.eot类型的字体 Firefox，chrome，Safari，Opera支持.ttf 与.otf两种类型字体 注意： Internet Explorer 8 及更早IE版本不支持@font-face 规则. 属性定义及使用说明@font-face规则，网页设计师再也不必使用的”web-safe”的字体之一。 字体的名称，font - face规则： 1font-family: myFirstFont; 字体文件包含在您的服务器上的某个地方，参考CSS： 1src: url(&apos;Sansation_Light.ttf&apos;) 如果字体文件是在不同的位置，请使用完整的URL：1src: url(&apos;http://www.w3cschool.css/css3/Sansation_Light.ttf&apos;) 去除inline-block元素间间距的N种方法转载 图标无法显示BootStrap glyphicon图标无法显示的解决方法 需要将fonts文件放在目录下 vertical-aligncss vertical-align:middle来实现垂直居中 其他在项目的过程中有文字溢出，后来听同学说CSS3总有个属性可以解决，就是text-overflow。 关于字母之间的距离word-spacing属性 CSS实现单行、多行文本溢出显示省略号的实现方法 要学会使用清除浮动，在这个项目中体现出自己没有习惯用清除浮动，然后出现很多不应该有的问题overflow:hidden 极其强大的移动端PC端滑块jquery插件Swiper Web移动端布局的那些事儿 深入理解 CSS3 弹性盒布局模型 Base64其实是一种简单的置换加密方式，但是BASE64的用处往往并不是为了防止信息泄露，而且为了方便传输，进过BASE64编码后的信息会比原始信息长，大概是4/3倍。 FormData 对象的使用 form表单的两种提交方式，submit和button的用法 Form表单提交 jquery中$each()方法的使用指南 html5图片上传与预览实现]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>JavaScript</tag>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[jQuery动画基础]]></title>
+    <url>%2F2018%2F01%2F07%2FjQuery%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[1.隐藏元素的hide方法，.hide(options)，当提供hide方法的参数时，.hide成为一个动画方法，将匹配元素的高度，宽度，以及透明度，同时进行动画操作。有快捷参数.hide(fast/slow),分别代表着200和600毫秒的延时！注意！jQuery在使用hide时，是会保持本身元素的原始属性值的，在之后通过对应的方法还原的时候还是初始值！css中类似的方法有display：none 2.显示元素show方法$(&#39;elem&#39;).hide(3000).show(3000)让元素执行3秒的隐藏动画，然后执行3秒的显示动画。show和hide修改是display属性，通过是visibility属性布局需要通过Css方法单独设置 3.toggle方法：用于切换显示或隐藏匹配元素。没有参数toggle()，没有动画。提供参数，提供了时间，还有动画的回调。该方法其实就是hide和show的相互切换 4.下拉动画slideDown：常用操作.slowDown([duration],[,complete])具体使用： 123$(&quot;ele&quot;).slowDown(1000,function()&#123; //等待动画执行一秒后，执行别的动作&#125;）; 在使用该方法前，元素是先隐藏起来的，可以设置display：none 5.上卷动画slideUp：最简单的使用就是不带参数$(&quot;elem&quot;).slideUp();含义：找到元素的高度，然后采用一个下滑动画让元素一直滑到隐藏，修改元素display样式属性为none，这样就可以确保这个元素不会影响页面布局了带参数的用法.slideUp([duration][,easing][,complete])注意：因为动画是异步的，所以在动画执行之后执行某些操作就必须写到回调函数里面 6.上卷下拉切换slideToggle：当隐藏一个动画之后，可以设置display样式为none，以确保该元素不再影响页面布局 7.淡出动画fadeOut：用于隐藏所有匹配的元素，并带有淡出的过渡动画效果.fadeOut([duration][,complete])淡入动画fadeIn其用法和上面的类似淡入淡出切换fadeToggle：如果当前元素是可见的吗，则将其隐藏（淡出）；如果元素当前是隐藏的，则将其显示（淡入） 8.淡入效果fadeTo：可以设置opacity的值，语法如下.fadeTo(duration,opacity,[,complete]) 9.animate方法：语法如下12.animate(properties[,duration][,easing][,complete]).animate(properties,options) 该方法允许我们在任意数值的css属性上创建动画。参数分析：properties：一个或者多个css属性的键对所构成的object对象。要特别注意所有用于动画的属性必须是数字的，除非有特别说明。还有注意党委属性值的单位像素是PX。 10.停止动画stop()11.each()方法：jQuery的大部分方法都是针对元素合集的操作 ，所以jQuery会提供$(selector).each()来遍历jQuery对象.each只是处理jQuery对象的方法，jQuery还提供了一个通用的jQuery.each()方法用来处理对象和数组的遍历，语法如下12jQuery.each(array,callback)jQuery.each(object,callback) 第一个参数传递的就是一个对象或者数组，第二个是回调函数each就是for循环方法的一个包装，内部就是通过for遍历数组与对象jQuery.each()函数还会根据每次调用callback的返回值来决定后续动作，如果返回值为false，则停止循环123$.each([&quot;Aaron&quot;,&quot;慕课&quot;],function(index,value))&#123; return false;//停止迭代&#125; 12.查找数组中的索引inArray：判断元素是否存在数组中，返回索引值，如果不存在該值，则返回-1。语法如下：jQuery.inArray(value,array[,fromIndex]) 13.去空格神器trim方法：用于去除字符串两端的空白字符，需要注意的是，如果这些空白符是在字符串的中间时，它们会被保留，不会被移除 14.jQuery是一个合集对象，如果需要单独操作合集中的某一个元素，可以通过.get()方法获取到，也可以获得某个。语法：.get([index])]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>jQuery</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[jQuery事件基础]]></title>
+    <url>%2F2018%2F01%2F07%2FjQuery%E4%BA%8B%E4%BB%B6%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[1.on()的多事件绑定 .on(event[,selector][,data]) 2.on的委托机制 3.通过.on()绑定的事件处理程序，通过off()方法移除该绑定 4.事件对象是用来记录一些事件发生时的相关信息的对象。事件对象只有在事件发生时才会产生，并且只能是事件处理函数内部访问，在所有的事件处理函数运行结束后，事件对象就被销毁 5.event.target可以是注册时候的属性，或者它的子元素。通常通过比较event.target和this来确定是不是由于冒泡出发的。经常用于事件冒泡时处理事件委托 6.简而言之，event.target代表当前触发事件的元素， 可以通过当前元素的一系列属性来判断是不是我们想要的元素 7.jQuery事件对象的属性和方法event.type:获取事件的类型event.pageX和event.pageY:获取鼠标当前相对于页面的坐标event.preventDefault()方法：阻止默认行为event.stopPropagation方法：阻止事件冒泡event.which:获取鼠标单击时，单击的是鼠标的哪个键 this和event.target的区别： js中事件是会冒泡的，所以this是可以变化的，但event.target不会变化，它永远是直接接受事件的目标DOM元素； .this和event.target都是dom对象 如果要使用jquey中的方法可以将他们转换，为jquery对象：$(this)和$(event.target);比如：event.target和$(event.target)的使用 8.原生事件：浏览器提供的，需要有交互才能被触发 9.trigger:根据绑定到匹配元素的给定事件类型执行所有的处理程序和行为，支持自定义事件，并且定义时间还支持传递参数 10.mousemove(监听用户的操作)用法：$ele.mousemove()$ele.mousemove(hander(eventObject))每次触发点击操作都会回调执行函数hander()$ele.mousemove([eventData],hander(eventObjet))不同作用域下传递数据的问题 11.mouseover和mouseout事件，基本的用法和上面的mousemove一样 12.mouseenter和mouseleave可以让我们知道鼠标是否在元素内部或者元素外部。mouseover和mouseenter的区别，关键点：冒泡的方式处理问题。mouseenter只会在它绑定的元素上有效，而不会在后代结点上有效 13.hover可以传递两个回调函数，会很方便的使用$(selector).hover(handerIn,handerOut)第一个参数是鼠标移入时触发的 ，第二个参数是鼠标移出时触发的 14.focusin事件，捕获某一个元素或者其内部某一个元素获得焦点的时候的动作，而focusout是捕获失去焦点的动作，使用方法和第一点提到的类似 15.focus()在元素本身产生，focusin()在元素包含的元素中产生 16.change事件监听&lt;input&gt;,&lt;textarea&gt;,&lt;select&gt;的改变动作 17.当textarea或者文本类型的input元素的文本被选择时，会发生select事件（也只用于这两个了） 18.form元素是有默认提交表单的行为，如果通过submit处理的话，需要禁止浏览器的这个默认行为传统的方式是调用事件对象 e.preventDefault() 来处理， jQuery中可以直接在函数中最后结尾return false即可 123$(&quot;#target&quot;).submit(function(data) &#123; return false; //阻止默认行为，提交表单&#125;); 19.keydown和keyup(每次的内容都是之前输入的，当前的获取不到)]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>jQuery</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[jQuery选择器]]></title>
+    <url>%2F2018%2F01%2F07%2FjQuery%E9%80%89%E6%8B%A9%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[基本选择器1234$(&quot;#test&quot;)$(&quot;.test&quot;)$(&quot;p&quot;)$(&quot;span,div,p.myclass&quot;)//选择所有div,&lt;span&gt;,和拥有class为myclass的p标签 层次选择器通过dom元素之间的层次关系来获取特定元素1234567$(&quot;div span&quot;)//选择div中的所有&lt;span&gt;元素+$(&quot;div&gt;span&quot;)//选取div下元素名是&lt;span&gt;的子元素$(&quot;.one+div&quot;)//选取class为one的下一个&lt;div&gt;同辈元素$(&quot;#two~div&quot;)//选取id为two的元素后面的所有&lt;div&gt;同辈元素//后面两个方法可以用其他方法代替如下$(&quot;.one&quot;).next(&quot;div&quot;);$(&quot;#pre&quot;).nextAll(&quot;div&quot;); 过滤选择器基本过滤选择器1234567891011$(&quot;div:first&quot;)$(&quot;div:last&quot;)$(&quot;input:not(.myClass)&quot;)//选取input元素中不包含myClass类的元素$(&quot;input:even&quot;)//选取索引是偶数的input元素$(&quot;input：odd&quot;)$(&quot;input:eq(1)&quot;)//选取索引是1的input元素$(&quot;input：gt(1)&quot;)$(&quot;input:lt(1)&quot;)$(&quot;:header&quot;)//选取网页中所有的&lt;h1&gt;,&lt;h2&gt;,&lt;h3&gt;...$(&quot;div:animated&quot;)//选取正在执行动画的&lt;div&gt;元素$(&quot;:focus&quot;)//选取当前获得焦点的元素 内容过滤选择器1234$(&quot;div:contains(&apos;我&apos;)&quot;)$(&quot;div:empty&quot;)//选取不包含子元素的&lt;div&gt;空元素$(&quot;div:has(p)&quot;)//选取含有&lt;p&gt;元素的div元素$(&quot;div:parent&quot;)//选取拥有子元素的div元素 可见性过滤选择器123$(&quot;:hidden&quot;)//选取所有不可见的元素。type=&quot;hidden&quot; display:none visibility:hidden等$(&quot;div:visible&quot;)//选择所有可见的div元素 属性过滤选择器123456789$(&quot;div[id]&quot;)$(&quot;div[title=test]&quot;)$(&quot;div[title!=test]&quot;)$(&quot;div[title^=test]&quot;)$(&quot;div[title$=test]&quot;)$(&quot;div[title*=test]&quot;)$(&apos;div[title|=&quot;en&quot;]&apos;)//选取title等于en或者以en为前缀（该字符后面紧跟一个连字符‘-’的元素）$(&apos;div[title~=&quot;uk&quot;]&apos;)//选取属性title用空格分隔的值中包含uk的元素$(&quot;div[id][title$=test]&quot;)//选择拥有属性id，并属性title以“test”结束的div元素 子元素选择器1234:nth-child(index/even/odd/equation):first-child:last-child:only-child 表单选择器1234567891011$(&quot;:input&quot;)//所有的input、textarea、select、button元素$(&quot;：text&quot;)$(&quot;:password&quot;)$(&quot;:radio&quot;)//单选框$(&quot;:checkbox&quot;)//选取所有的复选框$(&quot;:submit&quot;)//选择所有的提交按钮$(&quot;：image&quot;)//选择所有的图像按钮$(&quot;：reset&quot;)$(&quot;:button&quot;)$(&quot;:file&quot;)$(&quot;:hidden&quot;)]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>jQuery</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python高级特性]]></title>
+    <url>%2F2018%2F01%2F07%2FPython%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%2F</url>
+    <content type="text"><![CDATA[Python的代码不是越复杂越好，而是越简单越好，开发效率越简单越高 切片 12L = [&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;, &apos;Bob&apos;, &apos;Jack&apos;][L[0], L[1], L[2]] 另一种方法 L[0:3] L[0:3]表示，从索引0开始取，直到索引3为止，但不包括索引3。即索引0，1，2，正好是3个元素。 如果第一个索引是0，还可以省略： L[:3] 负数的情况 L[-2:-1] tuple也是一种list，唯一区别是tuple不可变。因此，tuple也可以用切片操作，只是操作的结果仍是tuple 字符串’xxx’也可以看成是一种list，每个元素就是一个字符。因此，字符串也可以用切片操作，只是操作结果仍是字符串 总结：有了切片操作，很多地方循环就不再需要了。Python的切片非常灵活，一行代码就可以实现很多行循环才能完成的操作。 迭代 在Python中，迭代是通过for … in来完成的 Python的for循环抽象程度要高于Java的for循环，因为Python的for循环不仅可以用在list或tuple上，还可以作用在其他可迭代对象上 Python内置的一种数据类型是列表：list。list是一种有序的集合，可以随时添加和删除其中的元素。 默认情况下，dict迭代的是key。如果要迭代value，可以用for value in d.values()，如果要同时迭代key和value，可以用for k, v in d.items() 123d = &#123;&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3&#125;for key in d: print(key) 由于字符串也是可迭代对象，因此，也可以作用于for循环 12for ch in &apos;ABC&apos;: print(ch) 如何判断一个对象是可迭代对象呢？方法是通过collections模块的Iterable类型判断 12from collections import Iterableisinstance(&apos;abc&apos;, Iterable) # str是否可迭代 Python内置的enumerate函数可以把一个list变成索引-元素对，这样就可以在for循环中同时迭代索引和元素本身 12for i, value in enumerate([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]): print(i, value) 列表生成式 [x * x for x in range(1, 11)] [x * x for x in range(1, 11) if x % 2 == 0] [m + n for m in &#39;ABC&#39; for n in &#39;XYZ&#39;] 用两个for实现全排列 for循环其实可以同时使用两个甚至多个变量，比如dict的items()可以同时迭代key和value 123d = &#123;&apos;x&apos;: &apos;A&apos;, &apos;y&apos;: &apos;B&apos;, &apos;z&apos;: &apos;C&apos; &#125;for k, v in d.items(): print(k, &apos;=&apos;, v) 生成器受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了 一边循环一边计算的机制，称为生成器：generator 创建generator 只要把一个列表生成式的[]改成()，就创建了一个generator g = (x * x for x in range(10)) 如果要一个一个打印出来，可以通过next()函数获得generator的下一个返回值 next(g) 使用for循环，因为generator也是可迭代对象 123g = (x * x for x in range(10)) for n in g: print(n) 1234567def fib(max): n, a, b = 0, 0, 1 while n &lt; max: print(b) a, b = b, a + b n = n + 1 return &apos;done&apos; 这就是定义generator的另一种方法。如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator 1234567def fib(max): n, a, b = 0, 0, 1 while n &lt; max: yield b a, b = b, a + b n = n + 1 return &apos;done&apos; 最难理解的就是generator和函数的执行流程不一样。函数是顺序执行，遇到return语句或者最后一行函数语句就返回。而变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行 12345678910def odd(): print(&apos;step 1&apos;) yield 1 print(&apos;step 2&apos;) yield(3) print(&apos;step 3&apos;) yield(5)o = odd() next(o) 同样的，把函数改成generator后，我们基本上从来不会用next()来获取下一个返回值，而是直接使用for循环来迭代 迭代器 可以直接作用于for循环的数据类型有以下几种： 一类是集合数据类型，如list、tuple、dict、set、str等； 一类是generator，包括生成器和带yield的generator function。 这些可以直接作用于for循环的对象统称为可迭代对象：Iterable。 可以使用isinstance()判断一个对象是否是Iterable对象 12from collections import Iterable isinstance([], Iterable) 可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator。 可以使用isinstance()判断一个对象是否是Iterator对象： 123from collections import Iterator isinstance((x for x in range(10)), Iterator) isinstance([], Iterator) 生成器都是Iterator对象，但list、dict、str虽然是Iterable，却不是Iterator。 把list、dict、str等Iterable变成Iterator可以使用iter()函数： isinstance(iter([]), Iterator) 这是因为Python的Iterator对象表示的是一个数据流，Iterator对象可以被next()函数调用并不断返回下一个数据，直到没有数据时抛出StopIteration错误。可以把这个数据流看做是一个有序序列，但我们却不能提前知道序列的长度，只能不断通过next()函数实现按需计算下一个数据，所以Iterator的计算是惰性的，只有在需要返回下一个数据时它才会计算。 Iterator甚至可以表示一个无限大的数据流，例如全体自然数。而使用list是永远不可能存储全体自然数的。]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python基础]]></title>
+    <url>%2F2018%2F01%2F07%2FPython%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[热门 特性 提供了非常完善的基础代码库 还有大量的第三方库 注释 对缩进严格要求 大小写敏感 特点：简单优雅 Python能够做什么 输入输出：input，print 12name = input(&apos;please enter your name: &apos;)print(&apos;hello,&apos;, name) 数据类型和 变量 整数、浮点数、字符串、布尔值、空值 变量、常量 空值是Python里一个特殊的值，用None表示。None不能理解为0，因为0是有意义的，而None是一个特殊的空值 使用list和tuple Python内置的一种数据类型列表：list,可以随时添加和删除其中的元素 123 classmates = [&apos;Michael&apos;, &apos;Bob&apos;, &apos;Tracy&apos;] classmates[&apos;Michael&apos;, &apos;Bob&apos;, &apos;Tracy&apos;] 用len()函数可以获得list元素的个数 len(classmates) 删除list末尾的元素，用pop()方法 list元素也可以是另一个的list（类似是二维数组） 另一种有序列表叫做元组：tuple，tuple和list很类似，但是tuple一旦初始化后不能修改 不可变的tuple有什么意义？因为tuple不可变，所以代码更安全。如果可能，能用tuple代替list就尽量用tuple。 可变？ 12345 t = (&apos;a&apos;, &apos;b&apos;, [&apos;A&apos;, &apos;B&apos;]) t[2][0] = &apos;X&apos;t[2][1] = &apos;Y&apos; t(&apos;a&apos;, &apos;b&apos;, [&apos;X&apos;, &apos;Y&apos;]) 条件判断 循环 使用dict和set Python内置了字典：dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值存储，具有极快的查询速度 123d = &#123;&apos;Michael&apos;: 95, &apos;Bob&apos;: 75, &apos;Tracy&apos;: 85&#125;d[&apos;Michael&apos;]95 可以通过in判断key是否存在 通过dict提供的get方法，如果key不存在，可以返回none，或者自己指定的value 123 d.get(&apos;Thomas&apos;) d.get(&apos;Thomas&apos;, -1)-1 删除key，用pop(key)方法 牢记dict的key必须是不可变对象 set set和dict类似，也是一组key的集合，但不存储value，在set中，没有重复的key 123 s = set([1, 2, 3]) s&#123;1, 2, 3&#125; add(key)方法可以添加到set中 remove(key)可以删除元素 set可以看成数学意义上的无序和无重复元素的集合，因此，两个set可以做数学意义上的交集、并集等操作。 讨论不可变对象 上面提到的list是可变对象，对list进行操作，list内部内容是会发生变化的。但是对于不可变对象，比如12345 a = &apos;abc&apos; b = a.replace(&apos;a&apos;, &apos;A&apos;) b&apos;Abc a&apos;abc&apos; 实例 定义函数 在Python中，定义一个函数要使用def语句，依次写出函数名、括号、括号中的参数和冒号:，然后，在缩进块中编写函数体，函数的返回值用return语句返回。 空函数 pass 语句 参数检查 返回多个值 函数执行结束的时候没有return语句时，自动return None 函数参数 默认参数 可变参数 *args是可变参数，args接收的是一个tuple关键字参数 **kw是关键字参数，kw接收的是一个dict参数组合 可变参数既可以直接传入：func(1, 2, 3)，又可以先组装list或tuple，再通过*args传入：func(*(1, 2, 3))；关键字参数既可以直接传入:func(a=1, b=2)，又可以先组装dict，再通过**kw传入：func(**{‘a’: 1, ‘b’: 2}) 使用*args和**kw是Python的习惯写法，当然也可以用其他参数名，但最好使用习惯用法 解决递归调用栈溢出的方法是通过尾递归优化，事实上尾递归和循环的效果是一样的，所以，把循环看成是一种特殊的尾递归函数也是可以的。]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[FreeCodeCamp小结]]></title>
+    <url>%2F2018%2F01%2F07%2FFreeCodeCamp%E5%B0%8F%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[总结一下在freeCodeCamp中做题过程学习的内容。 HTML1.当设计表单的时候，你可以制定某些选项为必填项（required）,只有当用户填写了该选项后，用户才能提交表单 &lt;input type = &quot;text&quot; required&gt; 2.单选按钮的一个例子 123456&lt;label&gt; &lt;input type = &quot;radio&quot; name = &quot;indoor-outdoor&quot;&gt;indoor&lt;/label&gt;&lt;label&gt; &lt;input type = &quot;radio&quot; name = &quot;indoor-outdoor&quot;&gt;outdoor&lt;/label&gt; 3.复选按钮（checkbox）,复选按钮是输入框的另一种类型 123&lt;label&gt;&lt;input type = &quot;checkbox&quot; name = &quot;personality&quot;&gt;1&lt;/label&gt;&lt;label&gt;&lt;input type = &quot;checkbox&quot; name =&quot;personality&quot;&gt;1&lt;/label&gt; &lt;label&gt;&lt;input type = &quot;checkbox&quot; name =&quot;personality&quot;&gt;1&lt;/label&gt; 4.使用checked属性，可以设置复选按钮和单选按钮被选中 &lt;input type = &quot;radio&quot; name = &quot;text-name&quot; checked&gt; 5.元素margin控制元素的border和元素实际占空间的距离。如果你将一个元素的margin设置成负值，元素将会变大 6.0 是 hex code（十六进制编码）中最小的一个，它代表颜色的完全缺失。F 是 hex code（十六进制编码）中最大的一个，它代表最大可能的亮度。color:#fff;白色的表示方法 7.Hex code 遵循 red-green-blue（红-绿-蓝），或者叫 rgb格式。hex code 中的前两位表示颜色中红色的数量，第三四位代表绿色的数量，第五六位代表蓝色的数量。 8.如果你做个算术，16 乘以 16 总共有 256 个值，所以从零开始计数的 rgb，和 hex code 一样有完全相同数量的可能数值。让我们用黑色的 RGB 值 rgb(0, 0, 0) 替换掉 body 元素背景色的 hex code。 javascript1.字符串中的转义序列在需要转义的字符前面加上’\‘ \’ 单引号 \”双引号 \反斜杠符 \n 换行符 \r 回车符 \t 制表符 \b 退格符 \f 换页符 2.中括号操作符中括号操作符的另一个使用方式是用变量来访问一个属性，当你需要遍历对象的属性列表或者查表时 12345678var myDog = &quot;Hunter&quot;;var dogs = &#123; Fido: &quot;Mutt&quot;, Hunter: &quot;Doberman&quot;, Snoopie: &quot;Beagle&quot;&#125;var breed = dogs[myDog];console.log(breed)// &quot;Doberman&quot; 3.JSONjavascript object notation简称JSON，它使用javascript对象的格式来存储数据，json是灵活的，因为它允许数据结构是字符串，数字，布尔值，字符串和对象的任意值]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[mysql数据库入门]]></title>
     <url>%2F2018%2F01%2F07%2Fmysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%A5%E9%97%A8%2F</url>
     <content type="text"><![CDATA[相关概念介绍MySQL为关系型数据库（Relational Database Management System）,所谓的关系型可以理解为“表格” 键（key）：表中用来识别某个特定人\物的方法，键的值在当前列中具有唯一性 windows下mysql的配置MySQL脚本的基本组成MySQL通过执行SQL脚本来完成对数据库的操作，该脚本由一条或者多条MySQL语句（SQL语句+扩展语句）组成，保存时脚本文件的后缀名为.sql MySQL中的数据类型三大数据类型：数字、日期\时间、字符串数据类型 整数：tinyint、smallint、mediumint、int、bigint 浮点型：float、 double、 real、 decimal日期和时间：date、time、datetime、timestamp、year字符串类型： 字符串: char、varchar 文本: tinytext、text、mediumtext、longtext 二进制(可用来存储图片、音乐等):tinyblob、blob、mediumblob、longblob 使MySQL数据库登录 mysql - h 主机名 -u 用户名 -p mysql -u root -p 创建一个数据库 create database 数据库名 [其它选项]; 选择所要操作的数据库 两种方法： 在登录数据库时指定, 命令:mysql -D 所选择的数据库名 -h 主机名 -u 用户名 -p例如mysql -D samp_db -u root -p 在登录后使用 use 语句指定, 命令:use 数据库名;use 语句可以不加分号, 执行 use samp_db 来选择刚刚创建的数据库, 选择成功后会提示: Database changed 创建数据库表使用create table语句可完成对表格的创建create table 表名称（列名称）; 操作MySQL数据库向表中插入数据 insert语句可以用来将一行或者多行数据插入到数据库表中，其中一般的形式如下： insert [into] 表名[列名1，列名2，列名3...] value (值1，值2，值3,...) 查询表中的数据 select语句： select 列名称 from 表名称 [查询条件]； 按特定条件查询 where关键词用于指定查询条件，用法形式： select 列名称 from 表名称 where 条件; 更新表中的数据 update 表名称 set 列名称 = 新值 where 更新条件; 删除表中的数据 delete 语句： delete from 表名称 where 删除条件; 创建表后的修改添加列 基本形式： alter table 表名 add 列名 列数据类型 [after 插入位置]; 修改列 alter table 表名 change 列名称 列新名称 新数据类型; 删除列 alter table 表名 drop 列名称; 重命名表 alter table 表名 rename 新表名; 删除整张表 drop table 表名; 删除整个数据库 drop database 数据库名; emmmmm,未完待续]]></content>
