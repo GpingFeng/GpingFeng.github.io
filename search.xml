@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用hexo和GitHub搭建自己的个人博客(初步搭建)]]></title>
+    <url>%2F2018%2F01%2F10%2F%E4%BD%BF%E7%94%A8hexo%E5%92%8CGitHub%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E5%88%9D%E6%AD%A5%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[前言一直想建一个属于自己的个人博客，用来记录自己学过的一些知识和踩过的坑，发现使用hexo和GitHub可以很便捷的创建一个比较美观的博客，下面是自己在这个过程中遇到的一些问题，供大家参考。 配置node 注意： 要使用node8.0以上的版本 git github 自行注册一个 GitHub新建项目 注意：项目必须遵循格式：账户名.github.io,并且需要勾选Initialize this repository with a README 开启GitHub-page功能 点击右侧的Settings，你将会打开这个库的setting页面 点击Automatic page generator，Github将会自动替你创建出一个gh-pages的页面。 如果你的配置没有问题，那么大约15分钟之后，yourname.github.io这个网址就可以正常访问了~ 如果yourname.github.io已经可以正常访问了，那么Github一侧的配置已经全部结束了。 过程安装Hexo在自己认为合适的地方创建一个文件夹，这里我以E：/hexo 为例子讲解，首先在E盘目录下创建Hexo文件夹，并在命令行的窗口进入到该目录 安装hexo 1npm install hexo-cli -g 可能你会看到一个WARN，但是不用担心，这不会影响你的正常使用。 然后输入1npm install hexo --save 然后你会看到命令行窗口刷了一大堆白字，下面我们来看一看Hexo是不是已经安装好了。 在命令行中输入： 1hexo -v 如果你看到了如图文字，则说明已经安装成功了。 hexo的相关配置初始化Hexo 接着上面的操作，输入： 1hexo init 然后 1npm install 之后npm将会自动安装你需要的组件，只需要等待npm操作即可。 首次体验Hexo继续操作，同样是在命令行中，输入： 1hexo g 然后输入： 1hexo s 在浏览器中打开http://localhost:4000/，你将会看到： 将hexo和GitHub page联系配置git个人信息 如果你之前已经配置好git个人信息，请跳过这一个 步骤，直接来到 1、设置Git的user name和email：(如果是第一次的话) 12git config --global user.name &quot;xujun&quot;git config --global user.email &quot;gdutxiaoxu@163.com&quot; 2、生成密钥 1ssh-keygen -t rsa -C &quot;gdutxiaoxu@163.com&quot; 配置Deployment 首先，应该介绍一下hexo的配置文件_config.yml,基本上配置都是在这里设定 _config.yml配置 在_config.yml文件中，找到Deployment，然后按照如下修改： 1234deploy: type: git repo: repo: git@github.com:yourname/yourname.github.io.git ##这里填写的格式要正确 branch: master 注意：repo: git@github.com:yourname/yourname.github.io.git这里yourname记得要换成你自己的GitHub账户名 比如：我的账户名为GpingFeng 1234deploy: type: git repo: https://github.com/GpingFeng/GpingFeng.github.io.git ##这里填写的格式要正确 branch: master 写博客、发文章到目前为止，整个博客已经搭建好了，接下来就是愉快的写文章了新建一篇博客，执行下面的命令： 1hexo new post &quot;article title&quot; 这时候在我的 电脑的目录下 F:\hexo\source\ _posts 将会看到 article title.md 文件 用MarDown编辑器打开就可以编辑文章了。文章编辑好之后，运行生成、部署命令： 12hexo g // 生成hexo d // 部署 当然你也可以执行下面的命令，相当于上面两条命令的效果 1hexo d -g #在部署前先生成 部署成功后访问 你的地址即可。 注意：很多时候很多问题需要在生成之前使用hexo clean清除一下 自己的踩坑： 注意需要提前安装一个扩展： 1npm install hexo-deployer-git --save 如果没有执行者行命令，将会提醒 1deloyer not found:git hexo本地测试运行重启后页面空白,提示 : WARN No layout: index.html? 运行git clone 指令获得主题后（假设是NEXT主题），在theme主题下保存文件夹的名称为：hexo-theme-next-0.4.0那么如果在config里设置的是next，就会出现这样的WARN，http://localhost:4000/显示的是空白。只要把theme下的文件夹名称改为next就显示正常了。 hexo 下的分类和表签无法显示，怎么解决？ 步骤1 新建一个文件夹，命名为 tags 。命令如下：1hexo new page &quot;tags&quot; 步骤2编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。页面内容如下：1234title: tagsdate: 2018-01-07 00:04:06type: &quot;tags&quot;comments: false 步骤3 在菜单中添加链接。编辑 主题配置文件 ，添加 tags 到 menu 中，如下: 12345menu: home: / archives: /archives tags: /tags categories: /categories 后记这里只是搭建起来而已，要实现自己的私人定制可以配置不同的主题，添加不同的功能等等，hexo官网有比较详细的介绍 hexo官方文档 推荐主题next主题]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[markdown语法总结]]></title>
     <url>%2F2018%2F01%2F07%2F2017-11-07markdown%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[区块引用，’&gt;’的使用就是直接在区块前面加上’&gt;’代码应用示例 return shell_exec(&quot;echo $input | $markdown_script&quot;); 有序列表 这是第一 这是第四?（其实变成了第二，但是文字前面需要空格哦~） 注意：如果列表项目间用空行分开，在输出 HTML 时 Markdown 就会将项目内容用 标签包起来 代码区块可以隔一行，然后加四个空格（或者两个制表符，有的电脑一个制表符），下面就可以形成代码块了 这是一个普通的块 这是一个代码块 分割线三个以上的星号、减号、底线 强调Markdown使用*和_作为强调字词的符号一个的时候相当于 两个的时候相当于strong 这是被强调的内容 这是strong的内容 代码一小段代码,直接使用’`’ hello world 图片]]></content>
@@ -216,7 +227,7 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>Hexo入门使用</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
 </search>
