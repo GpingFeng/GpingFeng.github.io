@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="node," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gping's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="这几天在学习node，以下的笔记主要是自己看《Node.js开发指南》的笔记，下面的内容主要是1到4章的">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node学习之node基础">
+<meta property="og:url" content="http://yoursite.com/2018/02/24/node学习之node基础/index.html">
+<meta property="og:site_name" content="Gping&#39;s Blog">
+<meta property="og:description" content="这几天在学习node，以下的笔记主要是自己看《Node.js开发指南》的笔记，下面的内容主要是1到4章的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-137b3807f534ccd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-70472a3447e87bb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-c3cb61efdd04649f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-4218f620d019eb4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-a83060ec2a0a9e80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-cd43a641a031294a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-6b0a018efd43cb30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-1be478106d44d8f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-e013ea6d8fefb62d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-51c4f86b62f76eb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-215dcf619713a4ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1784460-db116f0baa05f870.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-02-24T16:27:59.432Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node学习之node基础">
+<meta name="twitter:description" content="这几天在学习node，以下的笔记主要是自己看《Node.js开发指南》的笔记，下面的内容主要是1到4章的">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1784460-137b3807f534ccd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/24/node学习之node基础/"/>
+
+
+
+
+
+  <title>node学习之node基础 | Gping's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/GpingFeng"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gping's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/24/node学习之node基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯光平">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gping's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">node学习之node基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T23:50:29+08:00">
+                2018-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/02/24/node学习之node基础/" class="leancloud_visitors" data-flag-title="node学习之node基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,266
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这几天在学习node，以下的笔记主要是自己看<strong>《Node.js开发指南》</strong>的笔记，下面的内容主要是1到4章的<br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/1784460-137b3807f534ccd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Node.js开发指南"></p>
+<ul>
+<li><p><strong>单线程</strong>、<strong>异步式I/O</strong>、<strong>事件驱动式</strong>的程序设计模型</p>
+</li>
+<li><p>Node.Js是可以让JavaScript运行在服务器端的开发平台</p>
+</li>
+<li><p>Node.js内建了一个HTTP服务器支持，也就是你可以轻而易举地实现一个网站和服务器的组合</p>
+</li>
+<li><p>Node.js还可以<strong>部署到非网络应用的环境下</strong>，比如一个命令行工具<br>Node.js可以调用C/C++的代码</p>
+</li>
+<li><p>Node.js在执行的过程中会维护一个<strong>事件队列</strong>，程序在执行时进入事件循环等待下一个事件到来，每个异步式I/O请求完成后会被推送到事件队列中，等待程序进程进行处理</p>
+</li>
+<li><p>内存上下文切换？？</p>
+</li>
+<li><strong>回调函数</strong>很重要</li>
+<li><p><strong>Node.js的异步机制是基于事件的</strong>，所有的<strong>I/O、网络通信、数据库查询</strong>都以<strong>非阻塞的方式</strong>请求，返回的结果由<strong>事件循环处理</strong></p>
+</li>
+<li><p><img src="http://upload-images.jianshu.io/upload_images/1784460-70472a3447e87bb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="异步机制"></p>
+</li>
+<li><p><img src="http://upload-images.jianshu.io/upload_images/1784460-c3cb61efdd04649f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="事件循环"></p>
+</li>
+</ul>
+<p>第三章 <strong>Node.js的快速入门</strong></p>
+<ul>
+<li><p>node script.js  其中script.js 就是脚本的文件名</p>
+</li>
+<li><p><code>node -e &quot;console.log(&#39;Hello&#39;)&quot;</code></p>
+</li>
+<li>Node的REPL模式,REPL<code>（Read-eval-print loop）</code>，即输入—求值—输出循环</li>
+<li>两次Ctrl+c退出该模式</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1784460-4218f620d019eb4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="node和php"></p>
+<ul>
+<li><p>使用<strong>supervisor</strong>可以实现“热加载<br><code>supervisor 文件名</code></p>
+</li>
+<li><p>当线程遇到I/O操作时候，不会以阻塞的方式等待I/O操作的完成或者数据的返回，而是将I/O请求发送给操作系统，<strong>继续执行下一条语句</strong>。当操作系统完成I/O操作时候，以<strong>事件的形式通知</strong>I/O操作的线程，线程会在<strong>待定的时间</strong>处理这个事件</p>
+</li>
+<li><p><strong>单线程、非阻塞</strong><br>I/O部分和计算部分。通常<strong>I/O部分</strong>占用的时间比<strong>计算的部分</strong>多得多</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1784460-a83060ec2a0a9e80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="多线程同步式"></p>
+<ul>
+<li><strong>异步式I/O</strong>比<strong>传统的多线程阻塞式I/O</strong>少了多线程的开销</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1784460-cd43a641a031294a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="比较"></p>
+<ul>
+<li><p><strong>EventEmitter</strong></p>
+</li>
+<li><p><strong>require不会重复</strong>加载模块</p>
+</li>
+<li><p><strong>覆盖exports</strong><br>exports<br>使用<code>module.exports = Hello</code> 代替<code>exports.Hello = Hello</code></p>
+</li>
+<li><p>CommonJs规范应该具备以下特征：</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1784460-6b0a018efd43cb30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CommonJs"></p>
+<ul>
+<li><p>npm是node官方提供的包管理工具</p>
+</li>
+<li><p>获取一个包<br><code>npm [install/i]  [package_name]</code><br>本地模式和全局模式<br><code>npm [install/i]  -g [package_name]</code></p>
+</li>
+<li><p><strong>本地模式</strong>不会注册<strong>PATH环境变量</strong>，仅仅是把包安装到node_modules子目录下，其中的bin目录没有包含在PATH环境变量中，不能在命令行中调用</p>
+</li>
+<li><p>使用<strong>全局模式</strong>安装的包并不能直接在 JavaScript 文件中用<strong>require</strong>获得，因为 <strong>require</strong> 不会搜索 <strong>/usr/local/lib/node_modules/</strong>。</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1784460-1be478106d44d8f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="本地模式与全局模式"></p>
+<ul>
+<li><p><code>npm link</code> 不支持Windows</p>
+</li>
+<li><p>通过使用<code>npm init</code>可以根据交互式问答产生一个符合标准的package.json</p>
+</li>
+<li><p><code>npm pubilsh</code>发布包  package.json中修改version字段，重新使用<code>npm publish</code>重新发布</p>
+</li>
+<li><p>node中的全局对象是<strong>global</strong>，所有的全局变量（除了global本身以外）都是<strong>global对象的属性</strong>    </p>
+</li>
+<li><p><strong>process就是一个全局变量</strong>，即global对象的属性。它用于描述当前<strong>node进程状态</strong>的对象，提供一个与操作系统的<strong>简单接口</strong></p>
+</li>
+<li><p><code>process.nextTick(callback)</code>的功能是为<strong>事件循环</strong>设置一项任务，Node.js会在下一次事件循环响应时候调用callback</p>
+</li>
+<li><p><strong>常用工具util</strong>是node的核心模块，提供<strong>常用函数的集合</strong>，用于弥补核心JavaScript的功能过于精简的不足</p>
+</li>
+<li><p><code>util.inherit(constructor,superConstructor)</code>是一个实现对象间原型继承的函数<br><code>util.inspect(object,[showHidden],[depth],[])</code>是将任意对象转换成字符串的方法，通常用于调试或者错误输出</p>
+</li>
+<li><p>对于每个时间，<strong>EventEmitter</strong>支持若干个事件监听器</p>
+</li>
+<li><p>Node标准库提供了<strong>http模块</strong>，其中封装了高效的<strong>HTTP服务器</strong>和一个简易的<strong>HTTP客户端</strong></p>
+</li>
+<li><p><strong>http.Server</strong>是HTTP模块中的<strong>HTTP服务器对象</strong>，用Node.js做的所有<strong>基于HTTP协议的系统</strong>，如网站、社交应用甚至代理服务器，都是基于http.Server实现的</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1784460-e013ea6d8fefb62d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="经典实例"></p>
+<ul>
+<li><p><strong>http.Server的事件</strong><br>对它的事件编写响应函数即可实现http服务器的所有功能<br><strong>request</strong><br><strong>connection</strong><br><strong>close</strong></p>
+</li>
+<li><p><code>http.createServer([requestListener])</code><br>功能是创建一个HTTP服务器并将requestListener作为request事件的监听函数</p>
+</li>
+<li><p><code>http.ServerRequest</code>是HTTP请求的信息<br>一般由http.Server的request事件发送的，作为第一个参数进行传递</p>
+</li>
+</ul>
+<p>以下3个事件用于控制请求体传输<br><code>data</code><br><code>end</code><br><code>close</code></p>
+<ul>
+<li><code>http.ServerResponse</code>是返回给客户端的信息，决定了用户最后能够看到的内容。也是有<code>http.Server</code>的<strong>request事件</strong>发送的，作为第二个参数进行传递</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1784460-51c4f86b62f76eb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="重要成员函数"></p>
+<ul>
+<li>http模块提供两个函数<strong>http.request</strong>和<strong>http.get</strong>，功能是作为客户端向http服务器发起请求</li>
+</ul>
+<p><code>http.request(options,callback)</code>发起http请求。option是类似关联数组的对象，表示请求的参数，callback是请求的回调函数</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1784460-215dcf619713a4ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1784460-db116f0baa05f870.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果"></p>
+<ul>
+<li><code>http.ClientRequest</code>是由<strong>http.request</strong>或者<strong>http.get</strong>返回的对象，表示一个已经产生而且正在进行的http请求</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node/" rel="tag"><i class="fa fa-tag"></i> node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/24/node学习之认识node/" rel="next" title="node学习之认识node">
+                <i class="fa fa-chevron-left"></i> node学习之认识node
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/24/前端代码规范/" rel="prev" title="前端代码规范">
+                前端代码规范 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzAxMS85NTcz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="冯光平" />
+            
+              <p class="site-author-name" itemprop="name">冯光平</p>
+              <p class="site-description motion-element" itemprop="description">生活就像一块巧克力</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/GpingFeng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/7b3b868a79f6" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/583d0ba2a22b9d006c1b4f2a" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-html5"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/GpingFeng" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-comments"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/9109873/gping" target="_blank" title="Stack Overflow">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>Stack Overflow</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冯光平</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次 ||
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count"> 博客全站共14.1k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("C63G9Ai7cDYIVAgqqL5o9N0B-gzGzoHsz", "J5vXdqid6E2nRNDWUAOnGoY7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
